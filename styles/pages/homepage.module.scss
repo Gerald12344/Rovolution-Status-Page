@@ -1,0 +1,101 @@
+@import '../colours.scss';
+
+.homepage {
+    background-color: $white;
+    color: $base-color;
+    padding: 1rem;
+}
+
+.HomepageText {
+    text-align: center;
+    min-height: 80vh;
+    max-height: calc(80vh);
+
+    position: relative;
+    flex: 1;
+    margin-top: 27.5vh;
+    margin-bottom: -27.5vh;
+    font-size: 3em;
+
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 1.5em;
+    }
+    @media (max-width: 1338px) {
+        font-size: 1.75rem;
+    }
+
+    & > h4 {
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        margin: 0px;
+    }
+    p {
+        margin: 0;
+        padding: 0px;
+        font-size: 2rem;
+        @media (max-width: $breakpoint-tablet) {
+            font-size: 1rem;
+        }
+    }
+}
+.FlexLiner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    & > h1::after {
+        content: '|';
+        font-size: 6rem;
+        @media (max-width: $breakpoint-tablet) {
+            font-size: 3rem;
+        }
+        @media (max-width: 1338px) {
+            font-size: 4rem;
+        }
+
+        color: black;
+        animation: blink-caret 0.75s step-end infinite;
+    }
+}
+@keyframes blink-caret {
+    from,
+    to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+.White {
+    color: black;
+}
+.BlueText {
+    color: $base-color;
+}
+
+.HomepageStats {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 1rem;
+    }
+    & > p {
+        font-size: 1rem;
+    }
+    & > h1 {
+        margin: 0px;
+    }
+    & > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        & > div {
+            padding: 20px;
+        }
+    }
+}

@@ -1,0 +1,140 @@
+@import '../colours.scss';
+
+.Root {
+    & > div > span {
+        flex-grow: 3;
+
+        & > div {
+            width: fit-content;
+            cursor: pointer;
+            box-sizing: initial;
+            user-select: none;
+        }
+
+        & > span {
+            width: fit-content;
+        }
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+        position: relative;
+    }
+
+    user-select: none;
+
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+    z-index: 200;
+
+    border-width: 0px 0px 10px 0px;
+    border-style: solid;
+    border-image: linear-gradient(to top, rgba(0, 0, 0, 0), 10%, rgba(34, 34, 34, 0.295)) 5%;
+    border-image-slice: 4;
+
+    & > div {
+        display: flex;
+        background-color: white;
+
+        flex-wrap: wrap;
+
+        & > span > div {
+            margin: auto;
+        }
+
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 8% 0px 8%;
+
+        & > div {
+            display: flex;
+            flex-direction: row;
+
+            justify-content: center;
+            align-items: center;
+
+            @media (max-width: $breakpoint-tablet) {
+                flex-direction: column;
+            }
+
+            & > div {
+                padding-top: 1px !important;
+                padding-bottom: 1px !important;
+                cursor: pointer;
+            }
+
+            & > a,
+            & > div,
+            & > button {
+                outline: none;
+                cursor: pointer;
+                border-top: transparent;
+                border-left: transparent;
+                border-right: transparent;
+                background-color: transparent;
+                display: block;
+                font-size: 1.17em;
+                margin-block-start: 1em;
+                margin-block-end: 1em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: bold;
+                padding: 20px 20px 20px 20px;
+
+                transition-duration: 300ms;
+                border-bottom: $white solid 2px;
+
+                margin: 0px;
+
+                @media (max-width: $breakpoint-tablet) {
+                    width: 90vw;
+                    text-align: center;
+                }
+
+                &:hover {
+                    border-bottom: $base-color solid 2px;
+                }
+
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+
+.BlueText {
+    color: $base-color;
+}
+
+.navbarSizer {
+    min-height: 80px;
+    z-index: 1000;
+
+    height: max-content;
+
+    @media (max-width: 1040px) {
+        height: 160px;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+        height: auto;
+    }
+}
+
+.anchor {
+    & > p {
+        padding-left: 8px;
+    }
+
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.active {
+    border-bottom: black solid 2px !important;
+}

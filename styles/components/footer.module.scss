@@ -1,0 +1,63 @@
+@import '../colours.scss';
+
+.footerMain {
+    background-color: $white;
+    padding: 1rem;
+    display: flex;
+
+    flex-direction: row;
+
+    @media (max-width: $breakpoint-tablet) {
+        flex-direction: column;
+    }
+
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: $breakpoint-tablet) {
+        border-width: 20px 0px 0px 0px;
+    }
+    border-width: 10px 0px 0px 0px;
+    border-style: solid;
+    border-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0),
+            5%,
+            rgba(34, 34, 34, 0.295)
+        )
+        15%;
+    border-image-slice: 4;
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        max-width: calc(100% / 3);
+        @media (max-width: $breakpoint-tablet) {
+            max-width: 80%;
+        }
+    }
+
+    ul {
+        min-width: 80%;
+    }
+    a {
+        font-size: 1.3em;
+        text-decoration: underline;
+        color: $base-color;
+    }
+}
+.BlueText {
+    color: $base-color;
+}
+.footerImages {
+    position: relative;
+    width: 50%;
+    min-height: 100px;
+    aspect-ratio: 1850 / 500;
+}
+.greyText {
+    color: gray;
+}

@@ -1,0 +1,49 @@
+@import '../colours.scss';
+
+.MediaQueries {
+    margin: auto;
+    background-color: transparent;
+    margin-top: 40px;
+
+    &>div {
+        width: 80%;
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .topElement {
+        margin-top: 0px;
+    }
+
+    .bottomElement {
+        margin-bottom: 30px;
+    }
+
+    p {
+        white-space: pre-line;
+    }
+
+    &>div {
+        box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.05);
+    }
+
+
+}
+
+.link {
+    color: $base-color;
+    text-decoration: underline;
+}
+
+.username {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 0px 5px 0px 5px;
+}
+
+.copywrite {
+    color: grey;
+    font-size: 0.8rem;
+    margin-top: 30px;
+    margin-bottom: -10px;
+}

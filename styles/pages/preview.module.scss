@@ -1,0 +1,15 @@
+@import '../colours.scss';
+
+.root {
+    width: 100%;
+    text-align: center;
+    a {
+        margin-bottom: 15px;
+    }
+    h1 {
+        margin-top: 40px;
+    }
+}
+.BlueText {
+    color: $base-color;
+}
