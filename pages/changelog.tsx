@@ -11,7 +11,7 @@ export default function Uptime() {
             <GlobalMetaTags
                 title={'Rovolution Logistics - Changelog'}
                 description={
-                    'Rovolution status page reporting on the status of all Rovolution pages with incident history, full automated!'
+                    'Rovolution automated changelog to list all patches, bug fixes and changes being implement across all Rovolution systems, from Logistics, to Analytics!'
                 }
             />
         </>
