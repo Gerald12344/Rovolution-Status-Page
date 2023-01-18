@@ -1,5 +1,5 @@
 import Styled from 'styled-components';
-import Footer from '../components/footer';
+import Footer from '../components/footer/footer';
 import UptimeComponent from '../components/misc_shit/uptimeComp';
 import UptimeTitle from '../components/misc_shit/titlePage';
 import { useState } from 'react';
@@ -7,6 +7,8 @@ import MainUptimeBanner from '../components/misc_shit/uptimeBanner';
 import { CreateAndRunAggregation } from '../server/database/Aggregation';
 import { getManyFromUtilsFolder } from '../server/database/MongoMethods';
 import { GlobalMetaTags } from '../components/globalMetaTags';
+import { Accordion } from '@mantine/core';
+import AccordionComp from '../components/accordion';
 
 const Root = Styled.div`
     min-height:80vh;
@@ -81,6 +83,7 @@ export default function Uptime({
                 <h1>Uptime History</h1>
 
                 <Holder>
+                    <h2>Discord Bots</h2>
                     <UptimeComponent
                         title="Rovolution Discord Bot"
                         description={'Rovolution Verification Bot'}
@@ -89,40 +92,66 @@ export default function Uptime({
                         down={down}
                         percent={status['Rovolution Bot']}
                     />
-                    <UptimeComponent
-                        title="Rovolution Core Database"
-                        description={
-                            'The heart of Rovolution where all data is stored and maintained, if this fails there will be a full system outage.'
-                        }
-                        data={data}
-                        dbTitle="Rovolution Database"
-                        down={down}
-                        percent={status['Rovolution Database']}
-                    />
-                    <UptimeComponent
-                        title="Rovolution Website"
-                        description={'Rovolution website at https://www.rovolution.me'}
-                        data={data}
-                        dbTitle="Rovolution Site"
-                        down={down}
-                        percent={status['Rovolution Site']}
-                    />
-                    <UptimeComponent
-                        title="Rovolution Logistics Website"
-                        description={'Rovolution Logistics website at https://logistics.rovolution.me'}
-                        data={data}
-                        dbTitle="Logistics"
-                        down={down}
-                        percent={status['Logistics']}
-                    />
-                    <UptimeComponent
-                        title="Rovolution Game Analytics"
-                        description={'Rovolution game analytics backend!'}
-                        data={data}
-                        dbTitle="Analytics"
-                        down={down}
-                        percent={status['Analytics']}
-                    />
+
+                    <AccordionComp title="Websites">
+                        <>
+                            <UptimeComponent
+                                title="Rovolution Website"
+                                description={'Rovolution website at https://www.rovolution.me'}
+                                data={data}
+                                dbTitle="Rovolution Site"
+                                down={down}
+                                percent={status['Rovolution Site']}
+                            />
+                            <UptimeComponent
+                                title="Rovolution Bot Site"
+                                description={'Rovolution website at https://www.rovolution.me'}
+                                data={data}
+                                dbTitle="Rovolution Site"
+                                down={down}
+                                percent={status['Rovolution Site']}
+                            />
+                            <UptimeComponent
+                                title="Rovolution Verification Site"
+                                description={'Rovolution website at https://www.rovolution.me'}
+                                data={data}
+                                dbTitle="Rovolution Site"
+                                down={down}
+                                percent={status['Rovolution Site']}
+                            />
+                            <UptimeComponent
+                                title="Rovolution Logistics Website"
+                                description={'Rovolution Logistics website at https://logistics.rovolution.me'}
+                                data={data}
+                                dbTitle="Logistics"
+                                down={down}
+                                percent={status['Logistics']}
+                            />
+                            <UptimeComponent
+                                title="Rovolution Game Analytics"
+                                description={'Rovolution game analytics backend!'}
+                                data={data}
+                                dbTitle="Analytics"
+                                down={down}
+                                percent={status['Analytics']}
+                            />
+                        </>
+                    </AccordionComp>
+
+                    <AccordionComp title="Auxiliary Services">
+                        <>
+                            <UptimeComponent
+                                title="Rovolution Core Database"
+                                description={
+                                    'The heart of Rovolution where all data is stored and maintained, if this fails there will be a full system outage.'
+                                }
+                                data={data}
+                                dbTitle="Rovolution Database"
+                                down={down}
+                                percent={status['Rovolution Database']}
+                            />
+                        </>
+                    </AccordionComp>
                 </Holder>
             </Root>
             <Footer />

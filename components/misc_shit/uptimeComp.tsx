@@ -19,6 +19,7 @@ const Root = Styled.div`
     hr{
         margin-top:0px;
     }
+    margin-bottom:30px;
 
 `;
 
@@ -127,6 +128,30 @@ const UptimePercentHolder = Styled.div<{ fullWidth: Boolean }>`
     margin-bottom:-38px;
 `;
 
+export { GreenOrRed, Inline, Circle, Ontop };
+
+let update = (data) => {
+    if (data === undefined) return;
+
+    // Ok work out days it was down
+    let dateIn = new Date();
+    dateIn.setMonth(dateIn.getMonth() - 3);
+    let startTime = dateIn.getTime();
+
+    let endTime2 = new Date();
+    endTime2.setMonth(endTime2.getMonth() + 1);
+    let endTime = endTime2.getTime() + 86400000;
+
+    let buildArray: { [key: string]: boolean } = {};
+
+    for (let loopTime = startTime; loopTime < endTime; loopTime += 86400000) {
+        let loopDay = new Date(loopTime);
+        let formatDay = `${loopDay.getDate()}/${loopDay.getMonth()}/${loopDay.getFullYear()}`;
+        buildArray[formatDay] = false;
+    }
+    return buildArray;
+};
+
 export default function UptimeComponent({
     title,
     description,
@@ -146,7 +171,7 @@ export default function UptimeComponent({
     const [AmkIDown, setAmkIDown] = useState(down.find((x) => x.down === dbTitle) === undefined);
 
     const [wider, setWider] = useState(false);
-    const [dataLines, setDataLines] = useState({});
+    const [dataLines, setDataLines] = useState(update(data));
 
     useEffect(() => {
         let updateWidth = () => {
@@ -162,25 +187,7 @@ export default function UptimeComponent({
     }, []);
 
     useEffect(() => {
-        if (data === undefined) return;
-
-        // Ok work out days it was down
-        let dateIn = new Date();
-        dateIn.setMonth(dateIn.getMonth() - 3);
-        let startTime = dateIn.getTime();
-
-        let endTime2 = new Date();
-        endTime2.setMonth(endTime2.getMonth() + 1);
-        let endTime = endTime2.getTime() + 86400000;
-
-        let buildArray: { [key: string]: boolean } = {};
-
-        for (let loopTime = startTime; loopTime < endTime; loopTime += 86400000) {
-            let loopDay = new Date(loopTime);
-            let formatDay = `${loopDay.getDate()}/${loopDay.getMonth()}/${loopDay.getFullYear()}`;
-            buildArray[formatDay] = false;
-        }
-        setDataLines(buildArray);
+        setDataLines(update(data));
     }, [data]);
 
     useEffect(() => {
@@ -219,7 +226,7 @@ export default function UptimeComponent({
                             return (
                                 <ColorChanger key={k} color={allOk ? '#37B24D' : '#D9480F'}>
                                     <Tooltip
-                                        wrapLines
+                                        multiline={true}
                                         width={150}
                                         label={(allOk ? 'No Issues!' : 'Server Outage!') + '\n' + key}
                                         arrowSize={5}
@@ -235,9 +242,17 @@ export default function UptimeComponent({
                 <UptimePercentHolder fullWidth={wider}>
                     <hr></hr>
                     <div>
-                        {wider && <p>90 days ago</p>}
+                        {wider && (
+                            <div style={{ width: '120px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end ' }}>
+                                <p style={{ textAlign: 'left' }}>90 days ago</p>
+                            </div>
+                        )}
                         <p>{percent}% uptime</p>
-                        {wider && <p>Today</p>}
+                        {wider && (
+                            <div style={{ width: '120px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end ' }}>
+                                <p style={{ textAlign: 'right' }}>Today</p>
+                            </div>
+                        )}
                     </div>
                 </UptimePercentHolder>
             </Paper>

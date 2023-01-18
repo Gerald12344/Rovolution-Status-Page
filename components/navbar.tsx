@@ -25,7 +25,7 @@ export default function NavBar(props: propsInput) {
                 <div className={styles.Internal}>
                     <span>
                         <MoveDiv>
-                            <Link href="/" passHref>
+                            <Link legacyBehavior href="/" passHref>
                                 <a>
                                     <h1>
                                         Rovolution
@@ -36,13 +36,13 @@ export default function NavBar(props: propsInput) {
                         </MoveDiv>
                     </span>
                     <div>
-                        <Link href="https://status.rovolution.me">
+                        <Link legacyBehavior href="https://status.rovolution.me">
                             <a className={props.page === '' ? styles.active : ''}>Rovolution Status</a>
                         </Link>
-                        <Link href="https://logistics.rovolution.me">
+                        <Link legacyBehavior href="https://logistics.rovolution.me">
                             <a className={props.page === 'asdasfsaf' ? styles.active : ''}>Rovolution Logistics</a>
                         </Link>
-                        <Link href="https://www.rovolution.me">
+                        <Link legacyBehavior href="https://www.rovolution.me">
                             <a className={props.page === 'asdsadsa' ? styles.active : ''}>Rovolution Mainsite</a>
                         </Link>
                     </div>

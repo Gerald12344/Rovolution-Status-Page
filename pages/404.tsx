@@ -1,5 +1,5 @@
 import Styled from 'styled-components';
-import Footer from '../components/footer';
+import Footer from '../components/footer/footer';
 import NavBar from '../components/navbar';
 import Image from 'next/image';
 import { GlobalMetaTags } from '../components/globalMetaTags';

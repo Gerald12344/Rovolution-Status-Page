@@ -42,7 +42,7 @@ export default function UptimeTitle({ allOperating }) {
     return (
         <Root>
             <ImageHolder>
-                <Link href="https://www.rovolution.me" passHref>
+                <Link legacyBehavior href="https://www.rovolution.me" passHref>
                     <a target="_blank" rel="noreferrer">
                         <Image src="/Banner.png" alt="Logo" layout="fill" />
                     </a>
